@@ -1,0 +1,100 @@
+name: skillcerts
+
+services:
+
+  # Database Service (MongoDB)
+  mongo:
+    image: mongo:7-jammy
+    container_name: skillcerts-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-password}
+      MONGO_INITDB_DATABASE: ${MONGO_DB_NAME:-course-platform}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - skillcerts-network
+    healthcheck:
+      # Ping database to verify it is responsive
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # Backend API Service (Node.js/Express)
+  backend:
+    container_name: skillcerts-backend
+    image: ${BACKEND_IMAGE_TAG:-skillcert-backend:latest}
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: 3000
+      MONGODB_URI: ${MONGODB_URI:-mongodb://admin:password@mongo:27017/course-platform?authSource=admin}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      RZP_KEY: ${RZP_KEY}
+      RZP_SECRET: ${RZP_SECRET}
+      RZP_WEBHOOK_SECRET: ${RZP_WEBHOOK_SECRET}
+      RESEND_MAIL_SECRET: ${RESEND_MAIL_SECRET}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost}
+    volumes:
+      # Persists course media uploads across deployments
+      - uploads_data:/app/uploads
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - skillcerts-network
+    healthcheck:
+      # Queries the custom express health check endpoint
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # Frontend Web Service (React/Vite served by Nginx)
+  frontend:
+    container_name: skillcerts-frontend
+    image: ${FRONTEND_IMAGE_TAG:-skillcert-frontend:latest}
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Bakes backend API URL into static files during build stage
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:3000/api}
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - skillcerts-network
+    healthcheck:
+      # Pings the local Nginx web server using IPv4
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  mongo_data:
+    name: skillcerts-mongo-data
+  uploads_data:
+    name: skillcerts-uploads
+
+networks:
+  skillcerts-network:
+    name: skillcerts-network
+    driver: bridge
