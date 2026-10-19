@@ -61,7 +61,7 @@ export const CertificateTemplate = ({
                 fontWeight: 700,
               }}
             >
-              SKILLCERTS
+              SKILLORA
             </div>
 
             <div

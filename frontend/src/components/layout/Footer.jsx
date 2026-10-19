@@ -10,7 +10,7 @@ export const Footer = () => {
           <div className="col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-4">
               <BookOpen className="w-8 h-8 text-blue-500" />
-              <span className="text-xl font-bold text-white">SkillCerts</span>
+              <span className="text-xl font-bold text-white">Skillora</span>
             </Link>
             <p className="text-sm text-gray-400">
               Learn new skills and earn certificates. Join thousands of students worldwide.
@@ -63,7 +63,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} SkillCerts. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Skillora. All rights reserved.</p>
         </div>
       </div>
     </footer>

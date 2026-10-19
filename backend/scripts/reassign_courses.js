@@ -28,11 +28,11 @@ const run = async () => {
         'Admin not found. Creating default admin for orphan courses...'
       );
       systemUser = await User.create({
-        name: 'SkillCert Team',
-        email: 'admin@skillcert.com',
+        name: 'Skillora Team',
+        email: 'admin@skillora.com',
         passwordHash: '$2b$10$dummyhashvalueforpassword123',
         role: 'admin',
-        bio: 'Official SkillCert Course Content.',
+        bio: 'Official Skillora Course Content.',
       });
     }
 

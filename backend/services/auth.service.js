@@ -33,7 +33,7 @@ export const authService = {
     // Send welcome email (async)
     sendEmail({
       to: user.email,
-      subject: 'Welcome to SkillCerts! 🎓',
+      subject: 'Welcome to Skillora! 🎓',
       html: welcomeTemplate({
         userName: user.name,
         userEmail: user.email,

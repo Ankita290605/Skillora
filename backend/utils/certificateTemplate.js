@@ -320,7 +320,7 @@ export const generateCertificateHTML = (data) => {
     
     <div class="certificate-content">
       <div class="logo">
-        <h1>🎓 SkillCerts</h1>
+        <h1>🎓 Skillora</h1>
       </div>
 
       <div class="certificate-title">

@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "817507bb-6054-48bc-a8f0-3f344284a88d",
-    "name": "SkillCerts - Certificates",
+    "name": "Skillora - Certificates",
     "description": "Certificate generation and verification endpoints",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

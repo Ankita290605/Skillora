@@ -338,7 +338,7 @@ export const HomePage = () => {
             <div className="relative z-10 py-20 px-8 text-center">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready to Start Your Journey?</h2>
               <p className="text-xl text-blue-200 mb-10 max-w-2xl mx-auto">
-                Join SkillCerts today and unlock access to thousands of premium courses from industry experts.
+                Join Skillora today and unlock access to thousands of premium courses from industry experts.
               </p>
               <Link to="/signup">
                 <Button size="lg" className="h-14 px-8 text-lg bg-white text-[#020617] hover:bg-gray-100 hover:text-[#020617] shadow-xl">

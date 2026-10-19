@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "SkillCerts - User Profile & Auth",
+    "name": "Skillora - User Profile & Auth",
     "description": "User profile management and password reset endpoints",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "554f1adb-5d91-4cbd-9e18-79b064642328",
-    "name": "SkillCerts - Enrollments",
+    "name": "Skillora - Enrollments",
     "description": "Enrollment management endpoints",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

@@ -14,7 +14,7 @@ const run = async () => {
   }
 
   // Find any course to give her (that isn't one of the main ones we assigned to Girish/Dinesh already)
-  // Actually, I'll just find one of the "SkillCert Team" courses or any other.
+  // Actually, I'll just find one of the "Skillora Team" courses or any other.
   const course = await Course.findOne({
     instructor: { $ne: parna._id },
     title: { $not: /Machine Learning|Data Science|Advanced React/i },

@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "SkillCerts - Payments",
+    "name": "Skillora - Payments",
     "description": "Razorpay payment workflow with backend verification",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

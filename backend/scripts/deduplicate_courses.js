@@ -17,14 +17,14 @@ const run = async () => {
   await connectDB();
 
   try {
-    // Find or Create Hidden Owner (SkillCert Team)
+    // Find or Create Hidden Owner (Skillora Team)
     let systemUser = await User.findOne({ role: 'admin' });
     if (!systemUser) {
       console.log('Admin not found. Creating default admin...');
       // (Code to create admin if missing, same as before)
       systemUser = await User.create({
-        name: 'SkillCert Team',
-        email: 'admin@skillcert.com',
+        name: 'Skillora Team',
+        email: 'admin@skillora.com',
         passwordHash: 'dummy',
         role: 'admin',
       });

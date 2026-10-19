@@ -73,7 +73,7 @@ export const downloadCertificate = async ({
 
   pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, WIDTH, HEIGHT);
 
-  const fileName = `skillcert_${userName
+  const fileName = `skillora_${userName
     .replace(/[^a-z0-9]/gi, "_")
     .toLowerCase()}_${courseTitle
     .replace(/[^a-z0-9]/gi, "_")

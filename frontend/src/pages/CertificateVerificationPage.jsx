@@ -81,7 +81,7 @@ export const CertificateVerificationPage = () => {
                         Certificate Verification
                     </h1>
                     <p className="text-gray-400 mt-2 text-lg">
-                        Verify the authenticity of any SkillCerts certificate instantly
+                        Verify the authenticity of any Skillora certificate instantly
                     </p>
                 </div>
 

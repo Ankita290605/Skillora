@@ -38,7 +38,7 @@ connectDB();
 app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'SkillCerts API is running',
+    message: 'Skillora API is running',
     env: process.env.NODE_ENV,
   });
 });

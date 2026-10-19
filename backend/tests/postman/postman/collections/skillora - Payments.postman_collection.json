@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "cbf4cb58-d184-4511-90b1-7a9dead66b20",
-    "name": "SkillCerts - Payments",
+    "name": "Skillora - Payments",
     "description": "Razorpay payment workflow with backend verification",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

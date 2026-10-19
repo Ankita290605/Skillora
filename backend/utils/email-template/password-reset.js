@@ -77,12 +77,12 @@ export const passwordResetTemplate = ({
               <!-- Security Notice -->
               <div style="background-color: #fee2e2; border-left: 4px solid #ef4444; border-radius: 4px; padding: 16px; margin: 24px 0;">
                 <p style="margin: 0; color: #991b1b; font-size: 14px; line-height: 1.6;">
-                  🛡️ <strong>Security Tip:</strong> Never share your password or reset link with anyone. SkillCerts will never ask for your password via email.
+                  🛡️ <strong>Security Tip:</strong> Never share your password or reset link with anyone. Skillora will never ask for your password via email.
                 </p>
               </div>
 
               <p style="margin: 32px 0 0; color: #6b7280; font-size: 14px; line-height: 1.6; text-align: center;">
-                Having trouble? Contact us at <a href="mailto:support@skillcerts.com" style="color: #667eea; text-decoration: none;">support@skillcerts.com</a>
+                Having trouble? Contact us at <a href="mailto:support@skillora.com" style="color: #667eea; text-decoration: none;">support@skillora.com</a>
               </p>
             </td>
           </tr>
@@ -91,7 +91,7 @@ export const passwordResetTemplate = ({
           <tr>
             <td style="background-color: #f9fafb; padding: 32px 40px; text-align: center; border-radius: 0 0 12px 12px;">
               <p style="margin: 0 0 8px; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} SkillCerts. All rights reserved.
+                © ${new Date().getFullYear()} Skillora. All rights reserved.
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 This is an automated email. Please do not reply.

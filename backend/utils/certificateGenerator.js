@@ -127,12 +127,12 @@ export const generateCertificatePDF = (data, responseStream) => {
       align: 'center',
     });
 
-  // SkillCerts branding
+  // Skillora branding
   doc
     .fontSize(12)
     .font('Helvetica-Bold')
     .fillColor('#1E40AF')
-    .text('SkillCerts', 0, doc.page.height - 40, { align: 'center' });
+    .text('Skillora', 0, doc.page.height - 40, { align: 'center' });
 
   doc.end();
 };

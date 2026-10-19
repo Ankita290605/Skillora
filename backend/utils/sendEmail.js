@@ -6,16 +6,16 @@ const resend = new Resend(env.RESEND_MAIL_SECRET);
 export async function sendEmail({ to, subject, html }) {
   try {
     const { data, error } = await resend.emails.send({
-      from: 'SkillCerts <onboarding@resend.dev>',
+      from: 'Skillora <onboarding@resend.dev>',
       to,
       subject,
-      text: 'You have received a new message from SkillCerts.',
+      text: 'You have received a new message from Skillora.',
       html: `
         <p>Hello,</p>
         <p>${html}</p>
-        <p>— SkillCerts Team</p>
+        <p>— Skillora Team</p>
       `,
-      reply_to: 'support@skillcerts.com', // can be fake for now
+      reply_to: 'support@skillora.com', // can be fake for now
     });
 
     if (error) {

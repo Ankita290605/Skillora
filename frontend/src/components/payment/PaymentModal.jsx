@@ -89,7 +89,7 @@ export const PaymentModal = ({ course, isOpen, onClose, user }) => {
         key: key,
         amount: amount,
         currency: currency,
-        name: 'SkillCerts',
+        name: 'Skillora',
         description: courseTitle,
         order_id: orderId,
         handler: async function (response) {

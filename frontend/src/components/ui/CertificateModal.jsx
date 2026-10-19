@@ -26,7 +26,7 @@ export const CertificateModal = ({ certificateData, onClose }) => {
       // Generate filename
       const sanitizedCourseName = courseTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase();
       const sanitizedUserName = userName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-      const filename = `skillcert_certificate_${sanitizedUserName}_${sanitizedCourseName}.pdf`;
+      const filename = `skillora_certificate_${sanitizedUserName}_${sanitizedCourseName}.pdf`;
 
       // Capture the certificate as canvas
       const canvas = await html2canvas(certificateRef.current, {
@@ -118,7 +118,7 @@ export const CertificateModal = ({ certificateData, onClose }) => {
                 <div className="flex items-center justify-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                   <Award className="w-6 h-6 sm:w-10 sm:h-10 text-blue-600" />
                   <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent tracking-wider uppercase">
-                    SkillCert
+                    Skillora
                   </h1>
                   <Award className="w-6 h-6 sm:w-10 sm:h-10 text-blue-600" />
                 </div>
@@ -169,7 +169,7 @@ export const CertificateModal = ({ certificateData, onClose }) => {
 
               {/* Verification Notice */}
               <div className="mt-2 sm:mt-4 text-xs text-gray-400">
-                <p>Verify at: skillcert.com/verify/{certificateId}</p>
+                <p>Verify at: skillora.com/verify/{certificateId}</p>
               </div>
             </div>
           </div>

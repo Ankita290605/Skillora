@@ -86,7 +86,7 @@ export const Navbar = () => {
               <BookOpen className="w-6 h-6 text-white" />
             </div>
             <span className="text-2xl font-bold text-white">
-              SkillCerts
+              Skillora
             </span>
           </Link>
 

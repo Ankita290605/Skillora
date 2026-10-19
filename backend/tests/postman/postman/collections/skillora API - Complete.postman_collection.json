@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "fc88e5c1-0350-4142-9881-cf8aa8829273",
-    "name": "SkillCerts API - Complete",
-    "description": "Complete API collection for SkillCerts platform",
+    "name": "Skillora API - Complete",
+    "description": "Complete API collection for Skillora platform",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [

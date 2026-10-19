@@ -25,7 +25,7 @@ export const welcomeTemplate = ({ userName, userEmail }) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to SkillCerts</title>
+  <title>Welcome to Skillora</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f3f4f6; padding: 40px 20px;">
@@ -37,7 +37,7 @@ export const welcomeTemplate = ({ userName, userEmail }) => {
           <tr>
             <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 48px 40px; text-align: center; border-radius: 12px 12px 0 0;">
               <div style="font-size: 48px; margin-bottom: 16px;">🎓</div>
-              <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: -0.5px;">Welcome to SkillCerts!</h1>
+              <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700; letter-spacing: -0.5px;">Welcome to Skillora!</h1>
             </td>
           </tr>
 
@@ -49,7 +49,7 @@ export const welcomeTemplate = ({ userName, userEmail }) => {
               </p>
               
               <p style="margin: 0 0 24px; color: #4b5563; font-size: 16px; line-height: 1.6;">
-                Welcome to SkillCerts! We're thrilled to have you join our community of learners and professionals committed to continuous growth.
+                Welcome to Skillora! We're thrilled to have you join our community of learners and professionals committed to continuous growth.
               </p>
 
               <p style="margin: 0 0 24px; color: #4b5563; font-size: 16px; line-height: 1.6;">
@@ -82,10 +82,10 @@ export const welcomeTemplate = ({ userName, userEmail }) => {
           <tr>
             <td style="background-color: #f9fafb; padding: 32px 40px; text-align: center; border-radius: 0 0 12px 12px;">
               <p style="margin: 0 0 8px; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} SkillCerts. All rights reserved.
+                © ${new Date().getFullYear()} Skillora. All rights reserved.
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
-                Need help? Reach out at <a href="mailto:support@skillcerts.com" style="color: #667eea; text-decoration: none;">support@skillcerts.com</a>
+                Need help? Reach out at <a href="mailto:support@skillora.com" style="color: #667eea; text-decoration: none;">support@skillora.com</a>
               </p>
             </td>
           </tr>

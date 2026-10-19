@@ -1,10 +1,10 @@
-# Postman Collection for SkillCerts API
+# Postman Collection for Skillora API
 
 Complete Postman collection with all endpoints in ONE file with shared variables.
 
 ## 📁 Collection File
 
-### **skillcerts-complete.postman.json** - Complete API Collection
+### **skillora-complete.postman.json** - Complete API Collection
 
 ✅ **Single collection** - All endpoints in one place
 ✅ **Shared variables** - Token saved once, works everywhere
@@ -29,7 +29,7 @@ Complete Postman collection with all endpoints in ONE file with shared variables
 
 1. Open Postman
 2. Click **Import** button
-3. Drag and drop `skillcerts-complete.postman.json`
+3. Drag and drop `skillora-complete.postman.json`
 4. One collection appears with all folders!
 
 ### Start Testing
@@ -115,7 +115,7 @@ Run: Get All Courses
 
 ### 📁 Smart Organization
 ```
-skillcerts-complete.postman.json
+skillora-complete.postman.json
 ├── 1. User & Authentication
 │   ├── Sign Up Student
 │   ├── Sign Up Instructor
@@ -240,4 +240,4 @@ All responses follow this format:
 - ✅ Auto-save works everywhere
 - ✅ Easier to manage
 
-Import `skillcerts-complete.postman.json` and start testing! 🚀
+Import `skillora-complete.postman.json` and start testing! 🚀

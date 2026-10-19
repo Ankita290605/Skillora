@@ -1,100 +1,64 @@
 # Skillora — Skill-Based Learning & Certification Platform
 
-Skillora is a professional MERN stack application designed as an e-learning and certification platform. Instructors can seamlessly create, price, and manage courses, while learners can register, purchase courses securely, and earn verification certificates upon completion.
+Skillora is a MERN stack e-learning and certification platform. Instructors can create and manage courses, while learners can enroll, track their progress, and earn certificates.
 
----
+## Features
 
-## 🚀 Key Features
+- Role-based dashboards and workflows for instructors and learners
+- Course creation, curriculum management, and video content
+- Razorpay payment integration
+- PDF certificate generation and verification
 
-*   **Role-Based Access Control:** Separate dashboards and workflows for **Instructors** (creation, analytics, management) and **Learners** (learning, certificate tracking).
-*   **Course Management:** Rich course editor allowing curriculum building, video content upload, and pricing controls.
-*   **Secure Payment Integration:** Integrated with Razorpay checkout for seamless and safe transaction processing.
-*   **Certificate Generation:** Automatic, cryptographically verifiable PDF certificate generation upon course completion.
-*   **CI/CD Automated Pipelines:** Fully automated build, test, and release cycle targeting AWS cloud containerized nodes..
+## Technology Stack
 
----
+| Layer | Technology |
+|:---|:---|
+| Frontend | React, Vite |
+| Backend | Node.js, Express |
+| Database | MongoDB, Mongoose |
+| Payments | Razorpay |
+| Email | Resend |
 
-## 🛠️ Technology Stack
+## Local Development
 
-| Layer | Technology | Key Library/Plugin |
-|:---|:---|:---|
-| **Frontend** | React, Vite | React Router, TailwindCSS / Vanilla CSS |
-| **Backend** | Node.js, Express.js | JWT (Auth), Razorpay SDK, Resend Mail SDK |
-| **Database** | MongoDB | Mongoose (Object Data Modeling) |
-| **Containers** | Docker, Docker Compose | Multi-stage builder images, Nginx static host |
-| **DevOps** | GitHub Actions, Jenkins | SSH Webhooks, Docker-in-Docker agents |
-| **Cloud Hosting**| AWS EC2 | gp3 high-speed storage, 2GB Swap extension |
+### Requirements
 
----
+- Node.js 22 or newer
+- MongoDB running locally or a MongoDB connection URI
+- npm
 
-## 📦 Architecture & Setup
+### Backend
 
-### Infrastructure Layout
-The application uses Docker Compose to run a multi-container architecture inside a dedicated bridge network:
-
-```
-                  ┌──────────────────────────────────────────────┐
-                  │                   EC2 Host                   │
-                  │  ┌──────────────┐          ┌──────────────┐  │
-  HTTP (Port 80) ─┼─►│   Frontend   ├─────────►│   Backend    │  │
-                  │  │  (Nginx/Vite)│  (3000)  │ (Node/Exp.)  │  │
-                  │  └──────────────┘          └──────┬───────┘  │
-                  │                                   │          │
-                  │                                   ▼          │
-                  │                            ┌──────────────┐  │
-                  │                            │   Database   │  │
-                  │                            │  (MongoDB)   │  │
-                  │                            └──────────────┘  │
-                  └──────────────────────────────────────────────┘
-```
-
----
-
-## 💻 Local Development Setup
-
-To run the full stack locally with hot-reloading:
-
-1. **Clone the repository:**
+1. Open a terminal in `backend` and install dependencies:
    ```bash
-   git clone https://github.com/girishgarg12/SkillCerts.git
-   cd SkillCerts
+   cd backend
+   npm install
+   ```
+2. Create `backend/.env` from `backend/.env.example` and set `MONGODB_URI` to a running MongoDB instance. Add real payment and email credentials to use those integrations.
+3. Start the API:
+   ```bash
+   npm run dev
    ```
 
-2. **Configure environment variables:**
-   Create a `.env` file in the root folder based on `.env.example`:
-   ```bash
-   cp .env.example .env
-   ```
+The backend listens on `http://localhost:3000`; its health endpoint is `http://localhost:3000/health`.
 
-3. **Start the containers:**
-   ```bash
-   docker-compose up -d --build
-   ```
-   * The frontend will be available at: `http://localhost:80`
-   * The backend will be available at: `http://localhost:3000`
+### Frontend
 
----
+In a second terminal:
 
-## 🚀 CI/CD Pipeline Workflow
-
-The project uses a hybrid CI/CD pipeline combining the strengths of **GitHub Actions** and **Jenkins**:
-
-```
-[ Push to Main ] ────► [ GitHub Actions ] ────► [ Docker Hub ]
-                              │
-                      (Secure API Webhook)
-                              ▼
-                       [ AWS EC2 Jenkins ] ──► [ Deploy to Live Server ]
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
-1. **Continuous Integration (GitHub Actions):**
-   * Automatically triggered on every push to the `main` branch.
-   * Runs ESLint formatting checks and backend test suites.
-   * Compiles the React production bundle, builds backend/frontend Docker images, and pushes them to **Docker Hub**.
-   * Triggers the Jenkins CD job via a secure POST webhook.
+Open the local URL printed by Vite (normally `http://localhost:5173`). The frontend uses `http://localhost:3000/api` by default; set `VITE_API_BASE_URL` if the backend uses a different URL.
 
-2. **Continuous Deployment (Jenkins):**
-   * Jenkins (running in Docker on EC2) intercepts the webhook.
-   * Pulls the latest production images from Docker Hub.
-   * Swaps the running containers on the EC2 server with zero downtime.
-   * Runs automated HTTP health checks to verify that services are successfully running.
+## Production Builds
+
+Build the frontend with:
+
+```bash
+cd frontend
+npm run build
+```

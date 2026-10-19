@@ -37,7 +37,7 @@ export const SignupPage = () => {
         // Optional: Force selection or just warn. Let's make it optional for now but encouraged.
       }
       await signup(formData);
-      toast.success('Account created successfully! Welcome to SkillCerts.');
+      toast.success('Account created successfully! Welcome to Skillora.');
       navigate('/');
     } catch (err) {
       const errorMessage = err.message || 'Failed to sign up';
@@ -80,7 +80,7 @@ export const SignupPage = () => {
             <div className="bg-gradient-to-tr from-blue-600 to-blue-400 p-2 rounded-lg group-hover:scale-110 transition-transform">
               <BookOpen className="w-8 h-8 text-white" />
             </div>
-            <span className="text-2xl font-bold text-white">SkillCerts</span>
+            <span className="text-2xl font-bold text-white">Skillora</span>
           </Link>
           <h2 className="text-3xl font-bold text-white">Create your account</h2>
           <p className="text-gray-400 mt-2">Start your learning journey today</p>

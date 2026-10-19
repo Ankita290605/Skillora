@@ -109,7 +109,7 @@ export const certificateIssuedTemplate = ({
           <tr>
             <td style="background-color: #f9fafb; padding: 32px 40px; text-align: center; border-radius: 0 0 12px 12px;">
               <p style="margin: 0 0 8px; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} SkillCerts. All rights reserved.
+                © ${new Date().getFullYear()} Skillora. All rights reserved.
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 12px;">
                 Verify this certificate at: ${escapeHTML(certificateUrl)}

@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "ab645eec-1b89-445d-88a5-c414c5997261",
-    "name": "SkillCerts - Progress",
+    "name": "Skillora - Progress",
     "description": "Course progress tracking endpoints",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

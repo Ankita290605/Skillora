@@ -1,7 +1,7 @@
-# SkillCerts - Course Platform Backend
+# Skillora - Course Platform Backend
 
 ## 🎯 Project Overview
-**SkillCerts** is a comprehensive course-selling platform similar to Udemy, with an added certification feature upon course completion. Students can browse courses, enroll, track progress, and receive certificates when they complete courses.
+**Skillora** is a comprehensive course-selling platform similar to Udemy, with an added certification feature upon course completion. Students can browse courses, enroll, track progress, and receive certificates when they complete courses.
 
 ## 🏗️ Architecture
 

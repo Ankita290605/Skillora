@@ -52,7 +52,7 @@ export const userService = {
     const resetUrl = `${env.FRONTEND_URL}/reset-password?token=${resetToken}`;
     await sendEmail({
       to: user.email,
-      subject: 'Reset Your Password - SkillCerts',
+      subject: 'Reset Your Password - Skillora',
       html: passwordResetTemplate({
         userName: user.name,
         resetUrl,

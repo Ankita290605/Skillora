@@ -1,8 +1,8 @@
 {
   "info": {
-    "_postman_id": "afa8969f-96dd-47f5-9716-08ebd18f3a3a",
-    "name": "SkillCerts - Sections",
-    "description": "Course section management endpoints",
+    "_postman_id": "0be7f5ff-dfe1-431e-916e-c952dc479274",
+    "name": "Skillora - Lectures",
+    "description": "Lecture management endpoints",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -10,44 +10,65 @@
       "name": "Public",
       "item": [
         {
-          "name": "Get Course Sections",
-          "id": "f152dbd1-f851-4ec2-8f50-27c11dac8de5",
+          "name": "Get Section Lectures",
+          "id": "fe3a2905-3dbc-4760-b8f4-2544ba1c4e7a",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}",
+              "raw": "{{baseUrl}}/lectures/section/{{sectionId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}"]
+              "path": ["lectures", "section", "{{sectionId}}"]
             },
-            "description": "Get all sections for a course with lectures (public for published courses)"
+            "description": "Get all lectures in a section (public for published courses)"
           },
           "response": []
         },
         {
-          "name": "Get Single Section",
-          "id": "04765c1b-04a6-4db3-807d-8e3e7ba3691d",
+          "name": "Get Single Lecture (Preview)",
+          "id": "0b276637-5ab3-4c8f-ba0a-029cdeef2f80",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/sections/{{sectionId}}",
+              "raw": "{{baseUrl}}/lectures/{{lectureId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "{{sectionId}}"]
+              "path": ["lectures", "{{lectureId}}"]
             },
-            "description": "Get single section with lectures"
+            "description": "Get preview lecture (isPreview: true) - no enrollment required"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Lecture (Enrolled)",
+          "id": "03504be6-ab42-4cdb-b580-938b7f9a57df",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/lectures/{{lectureId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["lectures", "{{lectureId}}"]
+            },
+            "description": "Get lecture (requires enrollment if not preview)"
           },
           "response": []
         }
       ],
-      "id": "232caa1f-e954-4fd5-b6aa-ac79042f7d17",
-      "description": "Public section endpoints (no auth required for published courses)"
+      "id": "1933762f-95de-4e87-9b59-da59e5b1806d",
+      "description": "Public/student lecture access"
     },
     {
       "name": "Instructor",
       "item": [
         {
-          "name": "Create Section",
+          "name": "Create Lecture",
           "event": [
             {
               "listen": "test",
@@ -55,16 +76,16 @@
                 "exec": [
                   "if (pm.response.code === 201) {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.collectionVariables.set('sectionId', jsonData.data._id);",
-                  "    console.log('Section created: ' + jsonData.data._id);",
+                  "    pm.collectionVariables.set('lectureId', jsonData.data._id);",
+                  "    console.log('Lecture created: ' + jsonData.data._id);",
                   "}"
                 ],
                 "type": "text/javascript",
-                "id": "5f747dbc-4102-46ed-8fb5-2c9d896548eb"
+                "id": "d7050fe8-bad8-4d42-98a6-ff177024395a"
               }
             }
           ],
-          "id": "305965b4-eec0-4c29-bdd3-8f2d09b9de74",
+          "id": "2467cfa9-b1f2-4362-b796-d62b8455ccf6",
           "request": {
             "method": "POST",
             "header": [
@@ -80,19 +101,19 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Introduction to the Course\"\n}"
+              "raw": "{\n  \"title\": \"Introduction to the Topic\",\n  \"videoUrl\": \"https://example.com/video.mp4\",\n  \"duration\": 600,\n  \"isPreview\": true\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}",
+              "raw": "{{baseUrl}}/lectures/section/{{sectionId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}"]
+              "path": ["lectures", "section", "{{sectionId}}"]
             },
-            "description": "Create section (order auto-assigned)"
+            "description": "Create lecture (order auto-assigned)"
           },
           "response": []
         },
         {
-          "name": "Create Section with Order",
+          "name": "Create Lecture with Order",
           "event": [
             {
               "listen": "test",
@@ -100,16 +121,16 @@
                 "exec": [
                   "if (pm.response.code === 201) {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.collectionVariables.set('sectionId2', jsonData.data._id);",
-                  "    console.log('Section 2 created: ' + jsonData.data._id);",
+                  "    pm.collectionVariables.set('lectureId2', jsonData.data._id);",
+                  "    console.log('Lecture 2 created: ' + jsonData.data._id);",
                   "}"
                 ],
                 "type": "text/javascript",
-                "id": "e99194e0-6bc2-4673-a15e-3715ad51c79b"
+                "id": "b6b3d0e3-0242-4b2d-afeb-8c34e25d18c1"
               }
             }
           ],
-          "id": "699e43d5-38d0-4cb6-bf8b-cad580fb1cf6",
+          "id": "25420012-dab7-4e1f-90d3-c055d5095940",
           "request": {
             "method": "POST",
             "header": [
@@ -125,20 +146,20 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Advanced Topics\",\n  \"order\": 1\n}"
+              "raw": "{\n  \"title\": \"Advanced Concepts\",\n  \"videoUrl\": \"https://example.com/video2.mp4\",\n  \"duration\": 900,\n  \"isPreview\": false,\n  \"order\": 1\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}",
+              "raw": "{{baseUrl}}/lectures/section/{{sectionId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}"]
+              "path": ["lectures", "section", "{{sectionId}}"]
             },
-            "description": "Create section with custom order"
+            "description": "Create lecture with custom order"
           },
           "response": []
         },
         {
-          "name": "Update Section",
-          "id": "fb738647-1d21-4501-b87a-817ff47d5778",
+          "name": "Update Lecture",
+          "id": "3abcd1d9-0f18-4fe2-b237-f9445f89af01",
           "request": {
             "method": "PUT",
             "header": [
@@ -154,20 +175,20 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Getting Started with the Course\",\n  \"order\": 0\n}"
+              "raw": "{\n  \"title\": \"Updated Lecture Title\",\n  \"duration\": 720,\n  \"isPreview\": false\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/{{sectionId}}",
+              "raw": "{{baseUrl}}/lectures/{{lectureId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "{{sectionId}}"]
+              "path": ["lectures", "{{lectureId}}"]
             },
-            "description": "Update section title and order"
+            "description": "Update lecture details"
           },
           "response": []
         },
         {
-          "name": "Reorder Sections",
-          "id": "282a95a9-8954-4b31-b724-889a22615a47",
+          "name": "Reorder Lectures",
+          "id": "47f30720-c69a-4036-b0d7-861e43db14d0",
           "request": {
             "method": "PATCH",
             "header": [
@@ -183,20 +204,20 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"sectionIds\": [\n    \"{{sectionId2}}\",\n    \"{{sectionId}}\"\n  ]\n}"
+              "raw": "{\n  \"lectureIds\": [\n    \"{{lectureId2}}\",\n    \"{{lectureId}}\"\n  ]\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}/reorder",
+              "raw": "{{baseUrl}}/lectures/section/{{sectionId}}/reorder",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}", "reorder"]
+              "path": ["lectures", "section", "{{sectionId}}", "reorder"]
             },
-            "description": "Bulk reorder sections (array order determines new section order)"
+            "description": "Bulk reorder lectures (array order determines new lecture order)"
           },
           "response": []
         },
         {
-          "name": "Delete Section",
-          "id": "4dfa4053-31bb-4808-8f44-8bfc1f397faf",
+          "name": "Delete Lecture",
+          "id": "039da604-af6f-44d3-b519-e58f76795665",
           "request": {
             "method": "DELETE",
             "header": [
@@ -207,24 +228,24 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/sections/{{sectionId}}",
+              "raw": "{{baseUrl}}/lectures/{{lectureId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "{{sectionId}}"]
+              "path": ["lectures", "{{lectureId}}"]
             },
-            "description": "Delete section and all its lectures"
+            "description": "Delete lecture"
           },
           "response": []
         }
       ],
-      "id": "cbf54d7f-2d30-48a0-9406-ce1de21902e8",
-      "description": "Instructor/Admin section management"
+      "id": "45a5187f-b4ef-46e9-9530-704156f746f4",
+      "description": "Instructor/Admin lecture management"
     },
     {
       "name": "Error Tests",
       "item": [
         {
-          "name": "Create Section - No Auth",
-          "id": "9d734040-a98a-4b68-b4b6-4b4eaa71668d",
+          "name": "Create Lecture - No Auth",
+          "id": "d43284e3-3ecb-4fbc-a13f-d6946dea30a7",
           "request": {
             "method": "POST",
             "header": [
@@ -235,49 +256,20 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Unauthorized Section\"\n}"
+              "raw": "{\n  \"title\": \"Unauthorized Lecture\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}",
+              "raw": "{{baseUrl}}/lectures/section/{{sectionId}}",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}"]
+              "path": ["lectures", "section", "{{sectionId}}"]
             },
-            "description": "Test creating section without auth (should return 401)"
+            "description": "Test creating lecture without auth (should return 401)"
           },
           "response": []
         },
         {
-          "name": "Create Section - Not Instructor",
-          "id": "29874742-d05c-4228-a15a-fc5c5bf21fe8",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Forbidden Section\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/sections/course/<other_instructor_course_id>",
-              "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "<other_instructor_course_id>"]
-            },
-            "description": "Test creating section in another instructor's course (should return 403)"
-          },
-          "response": []
-        },
-        {
-          "name": "Create Section - Title Too Short",
-          "id": "c65c8a2e-4f14-4ef9-afdc-ca0c026879b9",
+          "name": "Create Lecture - Not Instructor",
+          "id": "01f15a09-3abf-4256-8a0c-030099814f59",
           "request": {
             "method": "POST",
             "header": [
@@ -293,20 +285,70 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Hi\"\n}"
+              "raw": "{\n  \"title\": \"Forbidden Lecture\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}",
+              "raw": "{{baseUrl}}/lectures/section/<other_instructor_section_id>",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}"]
+              "path": ["lectures", "section", "<other_instructor_section_id>"]
             },
-            "description": "Test title validation (should return 400)"
+            "description": "Test creating lecture in another instructor's section (should return 403)"
           },
           "response": []
         },
         {
-          "name": "Update Section - Not Found",
-          "id": "72ab412b-7da5-44f8-8fdf-a06bdfcc8f15",
+          "name": "Create Lecture - Invalid Video URL",
+          "id": "fdc3f4f9-70b5-4bf9-ba3c-874e09581154",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Lecture\",\n  \"videoUrl\": \"not-a-valid-url\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lectures/section/{{sectionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["lectures", "section", "{{sectionId}}"]
+            },
+            "description": "Test invalid video URL validation (should return 400)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Lecture - Not Enrolled",
+          "id": "545e9052-ae19-4323-92a8-c7692fd22c4f",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/lectures/<non_preview_lecture_id>",
+              "host": ["{{baseUrl}}"],
+              "path": ["lectures", "<non_preview_lecture_id>"]
+            },
+            "description": "Test accessing non-preview lecture without enrollment (should return 403)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Lecture - Not Found",
+          "id": "0418d6b9-075b-4612-8e67-09e999352b54",
           "request": {
             "method": "PUT",
             "header": [
@@ -322,79 +364,50 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Updated Section\"\n}"
+              "raw": "{\n  \"title\": \"Updated Title\"\n}"
             },
             "url": {
-              "raw": "{{baseUrl}}/sections/65f1a2b3c4d5e6f7g8h9i0j1",
+              "raw": "{{baseUrl}}/lectures/65f1a2b3c4d5e6f7g8h9i0j1",
               "host": ["{{baseUrl}}"],
-              "path": ["sections", "65f1a2b3c4d5e6f7g8h9i0j1"]
+              "path": ["lectures", "65f1a2b3c4d5e6f7g8h9i0j1"]
             },
-            "description": "Test updating non-existent section (should return 404)"
-          },
-          "response": []
-        },
-        {
-          "name": "Reorder - Invalid Array",
-          "id": "5ddc42bc-9448-401e-b243-fa371db148a0",
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{authToken}}",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"sectionIds\": []\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/sections/course/{{courseId}}/reorder",
-              "host": ["{{baseUrl}}"],
-              "path": ["sections", "course", "{{courseId}}", "reorder"]
-            },
-            "description": "Test reordering with empty array (should return 400)"
+            "description": "Test updating non-existent lecture (should return 404)"
           },
           "response": []
         }
       ],
-      "id": "7d86bb45-0a6c-4d2c-b288-e26b81ac2e20",
-      "description": "Section error scenarios"
+      "id": "9d7251fc-4457-4f32-b6a4-d3f036e2a639",
+      "description": "Lecture error scenarios"
     }
   ],
   "variable": [
     {
-      "id": "0e2956a4-447a-4407-a2dc-3ca91e4afa29",
+      "id": "3c36bc8d-81d8-4826-b856-b087ed6ad414",
       "key": "baseUrl",
       "value": "http://localhost:3000/api",
       "type": "string"
     },
     {
-      "id": "50da2892-64a7-49e5-8df0-4d7b79d84601",
+      "id": "e0320319-55ca-4eca-a87c-bdc8f2fdc77f",
       "key": "authToken",
       "value": "",
       "type": "string"
     },
     {
-      "id": "8d2fa901-037f-4704-ab41-a1c71243f499",
-      "key": "courseId",
-      "value": "",
-      "type": "string"
-    },
-    {
-      "id": "acd9ab5b-0cef-421c-923b-44f261e423dc",
+      "id": "9e031093-4e68-401a-832d-74f58bdb72b0",
       "key": "sectionId",
       "value": "",
       "type": "string"
     },
     {
-      "id": "719e8940-62a6-44e0-9a68-dc7a2be17065",
-      "key": "sectionId2",
+      "id": "343bbc30-53bd-4797-97b3-9354d33aeb93",
+      "key": "lectureId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "id": "1985a58c-0c13-481b-9687-8adb42a7b83b",
+      "key": "lectureId2",
       "value": "",
       "type": "string"
     }

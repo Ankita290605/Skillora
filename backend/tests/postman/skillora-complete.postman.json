@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "SkillCerts API - Complete",
-    "description": "Complete API collection for SkillCerts platform",
+    "name": "Skillora API - Complete",
+    "description": "Complete API collection for Skillora platform",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
